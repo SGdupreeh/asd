@@ -1,220 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Referenzy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Referenzy Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Sans+3&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Sans+3&display=swap" rel="stylesheet" />
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'Source Sans 3', sans-serif;
-  }
-
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: #fff;
-    font-family: 'Playfair Display', serif;
-    color: #000000;
-    padding: 40px 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-  nav strong {
-    font-weight: 400;
-    font-size: 3.5rem;
-  }
-  nav a {
-    color: #000;
-    margin-left: 85px;
-    text-decoration: none;
-    font-weight: 400;
-    font-family: 'Playfair Display', serif;
-    position: relative;
-    font-size: 1.7rem;
-  }
-  nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1.5px;
-    background: black;
-    left: 0;
-    bottom: -3px;
-    transition: width 0.1s ease;
-  }
-  nav a:hover::after {
-    width: 100%;
-  }
-
-  .burger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-  }
-  .burger span {
-    height: 3px;
-    width: 25px;
-    background: #000;
-    border-radius: 2px;
-    transition: 0.3s;
-  }
-  .nav-links {
-    display: flex;
-    gap: 25px;
-  }
-
-  @media (max-width: 768px) {
-    .burger { display: flex; }
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+    nav {
+      position: fixed;
+      width: 100%;
+      background: #fff;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    nav strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+    }
     .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #000;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #000;
+      bottom: -4px;
+      left: 0;
+      transition: width 0.2s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    .burger {
       display: none;
       flex-direction: column;
-      position: absolute;
-      top: 60px;
-      left: 0; right: 0;
-      background: rgba(19, 19, 19, 0.95);
-      align-items: center;
-      padding: 20px 0;
-      transform: translateY(-200%);
-      transition: transform 0.4s ease-in-out;
-      z-index: 999;
+      cursor: pointer;
+      gap: 5px;
     }
-    .nav-links.active {
+    .burger span {
+      width: 25px;
+      height: 3px;
+      background: #000;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: #111;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 20px 0;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .nav-links a {
+        color: #fff;
+      }
+      .burger {
+        display: flex;
+      }
+    }
+
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085') center/cover no-repeat;
       display: flex;
-      transform: translateY(0);
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
-    .nav-links a { margin: 10px 0; color: white; }
-    nav { flex-direction: column; align-items: center; text-align: center; }
-    nav a { margin: 10px 0; }
-  }
+    .hero h1 {
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+    }
 
-  main, section {
-    padding-top: 80px;
-    max-width: 1200px;
-    margin: auto;
-    font-family: 'Playfair Display', serif;
-  }
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
 
-  .hero {
-    width: 100vw;
-    height: 100vh;
-    background: url('https://yandex.ru/images/search?text=%D1%88%D0%BB%D1%8E%D1%85%D0%B8+%D1%82%D0%B5%D0%BA%D1%81%D1%82&pos=4&rpt=simage&img_url=https%3A%2F%2Fwww.inpearls.ru%2Fpng%2F822330.png&from=tabbar&lr=213') no-repeat center center / cover;
-    display: flex;           
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-bottom: 120px;
-  }
-  .hero h1 {
-    color: white;
-    font-size: 3rem;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-    font-family: 'Playfair Display', serif;
-    font-weight: 400 !important;
-    margin-top: 120px;
-  }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
 
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-    gap: 20px;
-  }
-  .gallery-grid img {
-    width: 100%;
-    border-radius: 4px;
-  }
+    .about, .contact {
+      font-family: 'Playfair Display', serif;
+    }
 
-  section.about {
-    padding: 40px 20px;
-    color: #000;
-    font-weight: 700;
-    margin-top: 230px;
-  }
-
-  /* Новый контейнер для contact и footer с прозрачным серым фоном */
-  .bottom-bar {
-    background: rgba(128, 128, 128, 0.3);
-    width: 100vw;
-    height: -30px;
-    margin: 40px auto 0;
-    border-radius: 6px;
-    padding: 40px 20px;
-    color: #000;
-    font-weight: 700;
-  }
-  .bottom-bar footer {
-    background: transparent;
-    padding-top: 10px;
-    font-weight: 400;
-    font-size: 0.9rem;
-    text-align: center;
-  }
-
-  h1, h2, h3 {
-    font-weight: 400 !important;
-  }
-</style>
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 0.9rem;
+      background: #eee;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
 
 <nav>
-  <div><strong>Referenzy</strong></div>
+  <strong>Referenzy</strong>
   <div class="burger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
   <div class="nav-links" id="navLinks">
-    <a href="#home">Main</a>
-    <a href="#gallery">Шлюхи нового городка</a>
-    <a href="#about">About me</a>
+    <a href="#home">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<div class="hero" id="home">
-</div>
+<header class="hero" id="home">
+  <h1 data-aos="fade-up">Welcome to My Portfolio</h1>
+</header>
 
-<section class="section" id="gallery">
-  <h2 style="text-align:left; margin-bottom:30px;" data-aos="fade-up">Почетна стена шлюх, давших за айфон)))))))</h2>
-  <div class="gallery-grid">
-    
+<section id="gallery">
+  <h2 data-aos="fade-up" style="margin-bottom: 20px;">Gallery</h2>
+  <div class="gallery-grid" id="galleryGrid">
+    <!-- Images will be inserted here -->
   </div>
 </section>
 
-<section class="section about" id="about">
-  <h2 data-aos="fade-right">About me</h2>
+<section class="about" id="about">
+  <h2 data-aos="fade-right">About Me</h2>
   <p data-aos="fade-right" style="margin-top: 10px;">
-    I am a web developer and visual storyteller. I create websites that inspire and speak without words.
+    I am a creative web developer focused on building clean, responsive, and interactive experiences.
   </p>
 </section>
 
-<!-- Обертка с прозрачным серым фоном для contact и footer -->
-<div class="bottom-bar">
-  <section class="section contact" id="contact">
-    <h2 >Contact</h2>
-    <p  style="margin-top: 10px;">
-      Email: example@mail.com<br/>
-      Phone: +123 456 7890
-    </p>
-  </section>
+<section class="contact" id="contact">
+  <h2 data-aos="fade-left">Contact</h2>
+  <p data-aos="fade-left" style="margin-top: 10px;">
+    Email: example@mail.com<br>
+    Phone: +123 456 7890
+  </p>
+</section>
 
-  <footer>
-    © 2025 Referenzy. All rights reserved.
-  </footer>
-</div>
+<footer>
+  © 2025 Referenzy. All rights reserved.
+</footer>
 
+<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init();
@@ -224,52 +188,22 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("#navLinks a").forEach(link => {
-      link.addEventListener("click", () => {
-        document.getElementById("navLinks").classList.remove("active");
-      });
-    });
-  });
-</script>
-
-<script>
-  AOS.init();
-
-  function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('active');
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("#navLinks a").forEach(link => {
-      link.addEventListener("click", () => {
-        document.getElementById("navLinks").classList.remove("active");
-      });
-
-      // Галерея: загружаем изображения из localStorage
-      const galleryGrid = document.querySelector(".gallery-grid");
-    <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const galleryGrid = document.querySelector(".gallery-grid");
-
-    // Список файлов, которые находятся в папке images
+    const galleryGrid = document.getElementById("galleryGrid");
     const imageList = [
-      "photo_2025-06-25_02-35-28 (2).jpg",
-      "photo_2025-06-25_02-35-28.jpg",
-      
+      "https://via.placeholder.com/400x300?text=Image+1",
+      "https://via.placeholder.com/400x300?text=Image+2",
+      "https://via.placeholder.com/400x300?text=Image+3",
+      "https://via.placeholder.com/400x300?text=Image+4"
     ];
 
-    galleryGrid.innerHTML = "";
-    imageList.forEach((file) => {
+    imageList.forEach(src => {
       const img = document.createElement("img");
-      img.src = `images/${file}`;
+      img.src = src;
       img.setAttribute("data-aos", "zoom-in");
       galleryGrid.appendChild(img);
     });
   });
 </script>
-
-</script>
-
 
 </body>
 </html>
