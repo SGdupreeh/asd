@@ -247,19 +247,17 @@
 
       // Галерея: загружаем изображения из localStorage
       const galleryGrid = document.querySelector(".gallery-grid");
-      const storedImages = JSON.parse(localStorage.getItem("galleryImages") || "[]");
+     const storedImages = JSON.parse(localStorage.getItem("galleryImages") || "[]");
 
-      if (storedImages.length > 0) {
-        galleryGrid.innerHTML = "";
-        storedImages.forEach((src) => {
-          const img = document.createElement("img");
-          img.src = src;
-          img.setAttribute("data-aos", "zoom-in");
-          galleryGrid.appendChild(img);
-        });
-      }
-    });
+if (storedImages.length > 0) {
+  galleryGrid.innerHTML = "";
+  storedImages.forEach((src) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.setAttribute("data-aos", "zoom-in");
+    galleryGrid.appendChild(img);
   });
+}
 </script>
 
 
